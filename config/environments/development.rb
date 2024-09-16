@@ -88,4 +88,7 @@ config.cache_store = :redis_cache_store, {
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.assets.debug = true
+  config.assets.compile = true 
 end
+

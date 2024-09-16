@@ -1,0 +1,13 @@
+.assign-task-form{ data: {controller: "task"}}
+  = form_with model: AssignedTask.new, local: true do |f| 
+    .form-group
+      = f.label :user_id, "User", class: "col-sm-2 col-form-label"
+      .col-sm-10
+        = f.select :user_id, options_for_select([["Please select", ""]] + User.all.map { |user| [user.email, user.id] }), {}, { class: "form-control", data: { user: "user_id" }, id: 'assign_user_id' }
+    .form-group
+      = f.label :task_id, "Task", class: "col-sm-2 col-form-label"
+      .col-sm-10
+        = f.select :task_id, options_for_select([["Please select", ""]]+ Task.all.map { |task| [task.title, task.id] }), {}, { class: "form-control", data: { task: "task_id" }, id: 'assign_task_id' }
+    .form-group
+      .col-sm-10.offset-sm-2
+        = f.hidden_field :owner_id, value: current_user.id, data: { task_target: "owner_id" }, id: 'assign_owner_id'

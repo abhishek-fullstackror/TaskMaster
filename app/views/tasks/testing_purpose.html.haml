@@ -1,14 +1,1 @@
-%button.btn.btn-primary{"data-toggle" => "modal", "data-target" => "#taskModal", "data-whatever" => "@task"} Create Task
-
-.modal.fade#taskModal{"tabindex" => "-1", "role" => "dialog", "aria-labelledby" => "taskFormModalLabel", "aria-hidden" => "true"}
-  .modal-dialog{"role" => "document"}
-    .modal-content
-      .modal-header
-        %h5.modal-title#taskFormModalLabel New Task
-        %button.close{"data-dismiss" => "modal", "aria-label" => "Close"}
-          %span{"aria-hidden" => "true"} &times;
-      .modal-body
-        = render 'tasks/form'
-      .modal-footer
-        %button.btn.btn-secondary{"data-dismiss" => "modal"} Close
-        %button.btn.btn-primary{"type" => "submit"} Create
+= render partial: "tasks/table_body", locals: { tasks: @tasks }
