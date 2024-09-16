@@ -1,24 +1,21 @@
-# README
+# TaskMaster
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TaskMaster is a real-time task management web application built with Ruby on Rails, Stimulus Reflex, CableReady, PostgreSQL, and Bootstrap. This README provides an overview of the application's setup and configuration.
 
-Things you may want to cover:
+## Ruby Version
 
-* Ruby version
+This application is built using Ruby 3.x. Ensure you have the correct version installed. You can manage Ruby versions using [rbenv](https://github.com/rbenv/rbenv) or [rvm](https://rvm.io/).
 
-* System dependencies
+## System Dependencies
 
-* Configuration
+- Ruby 3.x
+- Rails 7.x
+- PostgreSQL
+- Node.js (for managing JavaScript dependencies)
+- Yarn (for managing JavaScript packages)
 
-* Database creation
+## Configuration
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. **Install Bundler**: Make sure Bundler is installed:
+   ```bash
+   gem install bundler
