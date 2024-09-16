@@ -1,0 +1,61 @@
+.container-flouid
+  %nav.navbar.navbar-expand-lg.bg-light
+    .container
+      = link_to('GO TO HOME', root_path, class: 'navbar-brand')
+      %button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation")
+        %span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbarTogglerDemo02
+        %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          %li.nav-item
+            = link_to("Member", "#", class: 'nav-link active',aria: { current:"page"})
+          %li.nav-item
+            = link_to("Courses", "#", class: 'nav-link active',aria: {current:"page"})
+          %li.nav-item
+            = link_to("Test", "#", class: 'nav-link active',aria: { current:"page"})
+
+          %li.nav-item
+            = link_to("Event", "#", class: 'nav-link active',aria: { current: "page"})
+       
+      - if user_signed_in? 
+        = link_to "Sign out", destroy_user_session_path, class: "btn btn-outline-primary mr-2",data: { turbo_method: :delete } 
+      - else
+        = link_to "Sign In", new_user_session_path, class: "btn btn-outline-primary mr-2"
+    
+      - if user_signed_in? && current_user.admin?
+        %button.btn.btn-primary{"data-toggle" => "modal", "data-target" => "#taskModal", "data-whatever" => "@task"} Create Task
+        .modal.fade#taskModal{"tabindex" => "-1", "role" => "dialog", "aria-labelledby" => "taskFormModalLabel", "aria-hidden" => "true"}
+          .modal-dialog{"role" => "document"}
+            .modal-content{data: {controller: "task"}}
+              .modal-header
+                %h5.modal-title#taskFormModalLabel New Task
+                %button.close{"data-dismiss" => "modal", "aria-label" => "Close"}
+                  %span{"aria-hidden" => "true"} &times;
+              .modal-body
+                = render 'tasks/form'
+              .modal-footer
+                %button.btn.btn-secondary{"data-dismiss" => "modal"} Close
+                %button.btn.btn-primary{type: "button", data: { action: "click->task#submit", title_target: 'title', description_target: 'description', user_id_target: 'user_id' , task_description_container: ''}} Create
+  #updateTaskForm
+    .h2.text-center.mt-2.px-2
+      Tasks
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{ scope: "col" } TITLE
+          %th{ scope: "col" } DESCRIPTION
+          %th{ scope: "col" } USER
+          %th{ scope: "col" } CREATED active
+      %tbody
+        - @tasks.each do|task|
+          %tr
+            %th{ scope: "row" } 
+              = task.title
+            %td 
+              = task.description
+            %td
+              = task.user.email
+            %td 
+              = task.created_at
+
+
+

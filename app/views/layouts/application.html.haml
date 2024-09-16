@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title TaskMaster
+    %meta{name: "viewport", content: "width=device-width,initial-scale=1"}
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "https://code.jquery.com/jquery-3.5.1.min.js"
+    = javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+    = javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+
+    = javascript_importmap_tags
+
+  %body
+    .container
+      = render 'layouts/notification'
+      = yield

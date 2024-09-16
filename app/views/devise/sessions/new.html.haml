@@ -1,0 +1,43 @@
+.row
+  .col-lg-12
+    %h3.sign_in_txt.center 
+      SIGN IN TO BLOG
+    %p.text-center 
+      Welcome Back!
+    .signup_form_wrap
+      = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+
+        .field.position-relative
+          = f.password_field :password, id: "password-field", autocomplete: "current-password", class: "form-control"
+          %i.fa.fa-eye{id: 'viewTogglePassword', style: 'position: absolute; right: 10px; top: 70%; transform: translateY(-50%); cursor: pointer;'}
+
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me
+
+        .actions{style: "width: 100%;"}
+          = f.submit "Sign In With Email",class: "btn btn-primary gold-btn sign_in_btn"
+          %h2.background
+            %span 
+              OR
+          = link_to("Sign In with google Login", root_path, class: "btn btn-info sign_in_btn mt-1 sign-google", data:{method: 'post'})
+
+     
+
+:javascript
+  document.getElementById('viewTogglePassword').addEventListener('click', function () {
+    var passwordField = document.getElementById('password-field');
+    var icon = this;
+
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text';
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    } else {
+      passwordField.type = 'password';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+  });

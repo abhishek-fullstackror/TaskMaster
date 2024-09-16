@@ -1,0 +1,81 @@
+.signup_form_wrap {
+  max-width: 350px;
+  box-shadow: rgba(7, 34, 48, 0.11) 0px 20px 30px;
+  background: rgb(255, 255, 255);
+  padding: 30px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(221, 221, 221);
+  border-image: initial;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sign_in_txt {
+  margin-top: 30px;
+  font-weight: bold;
+  color: black;
+}
+.center {
+  text-align: center;
+}
+p.text-center {
+  font-size: 14px;
+  line-height: 1.42857;
+  text-align: center !important;
+  padding: 0px;
+}
+
+label {
+  font-weight: normal;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.password-wrapper {
+  position: relative;
+}
+
+#password-field {
+  padding-right: 30px; /* To ensure space for the icon inside the input */
+}
+
+.fa-eye {
+  position: absolute;
+  right: 10px;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.btn.gold-btn {
+  background: #cc1d2a;
+  border-radius: 4px;
+  color: #fff;
+  width: 100%;
+  font-weight: bold;
+}
+
+h2.background {
+  position: relative;
+  z-index: 1;
+  font: 14px sans-serif;
+  margin: 15px 0 0;
+  text-align: center;
+}
+
+a.btn.btn-info.sign-google {
+  background-color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  color: #333333;
+  border: 1px solid #ccc;
+  margin-top: 15px;
+  padding: 10px 15px;
+  width: 100%;
+}

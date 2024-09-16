@@ -1,0 +1,44 @@
+<div class="col-lg-12">
+    <h3 align="center" style="margin-top:30px;font-weight:bold;color:black;">SIGN UP FOR MY BLOG</h3>
+    <p class="text-center"><a href="/users/sign_in/" previewlistener="true">Already have a account? Sign in here.</a></p>
+    <div class="signup_form_wrap">
+      <div class=""> <!--commented our border-right on col-med-12-->
+        <div>
+          
+          <h4 class="bold-text">SIGN UP</h4>
+        </div>
+      
+        <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" data-remote="true" method="post" novalidate="novalidate" data-gtm-form-interact-id="0"><input type="hidden" name="authenticity_token" value="TZWFQCj5PmJLu2K7AiHDKeQaCZJqPtRWZ/6FmwZQbPlEF1GkhBLtWDnOkuE2FpDBaYy4AbVMVTwAo4bD/NCieg==">
+          
+          <div class="field">
+            <label> Email</label>
+            <input class="form-control error" placeholder="" type="email" name="user[email]" id="user_email" data-gtm-form-interact-field-id="0" aria-required="true" aria-invalid="false">
+            <input type="hidden" name="ajaxified" id="ajaxified" value="1">
+          </div>
+          <div id="sample-captcha"></div>
+          <div class="field position-relative clear-both">
+            <label>Password</label>
+            <input value="" autocomplete="off" class="form-control error" onkeyup="passwordStatusBar(this.value)" type="password" name="user[password]" id="user_password" data-gtm-form-interact-field-id="1" aria-required="true" aria-invalid="true">
+            <div class="password-addon">
+              <i class="fa fa-eye fa-eye-slash" aria-hidden="true" id="viewTogglePassword"></i>
+            </div>
+            <small class="help-block" id="password-status-text"></small>
+          </div>
+
+          <label class="error hide" id="guest_user_email"></label>
+
+          <div class="actions">
+            <input type="submit" name="commit" value="Continue With Email" class="btn gold-btn sign_in_btn" data-disable-with="Continue With Email">
+          </div>
+          
+</form>
+          <h2 class="background non-home-pro-content"><span>or</span></h2>
+
+            <a class="btn btn-info mt-1 sign-google non-home-pro-content" href="/users/auth/google_oauth2?aff_code=" data-method="post" previewlistener="true">
+                <img src="/assets/google-icon.svg" style="height: 20px; margin-right: 5px" alt="Continue With Google">
+                <span>Continue With Google</span>
+            </a>
+        
+      </div>
+    </div>
+  </div>

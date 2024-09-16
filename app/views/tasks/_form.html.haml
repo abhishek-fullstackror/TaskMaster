@@ -1,0 +1,9 @@
+.new-task-form{ data: {controller: "task"}}
+  = form_with model: Task.new, local: true do |f| 
+    .form-group
+      = f.label :title, "Task Title" 
+      = f.text_field :title,class: "form-control", placeholder: "Enter task title", required: true, data: { task_target: "title"} , id: 'title'
+    .form-group
+      = f.label :description, "Task Description" 
+      = f.text_area :description,class: "form-control", placeholder: "Enter task description", required: true ,data: {task_target: "description"}, id: 'description'
+      = f.hidden_field :user_id, value: current_user.id, data: { task_target: "id" }, id: 'user_id'
