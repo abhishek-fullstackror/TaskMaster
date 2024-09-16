@@ -5,10 +5,12 @@ Rails.application.routes.draw do
     end
     member do
       get 'find_user_email'
+      post 'assign'
     end
   end
   devise_for :users
-   
+  resources :assigned_tasks
+
   resource :example, constraints: -> { Rails.env.development? }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

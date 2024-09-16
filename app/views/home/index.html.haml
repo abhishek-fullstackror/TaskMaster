@@ -38,15 +38,16 @@
   #updateTaskForm
     .h2.text-center.mt-2.px-2
       Tasks
-    %table.table.table-striped
+    %table.table.table-striped{ data: {controller: 'task'}}
       %thead
         %tr
           %th{ scope: "col" } TITLE
           %th{ scope: "col" } DESCRIPTION
           %th{ scope: "col" } USER
-          %th{ scope: "col" } CREATED active
+          %th{ scope: "col" } CREATED
+          %th{ scope: "col" } Assigned
       %tbody
-        - @tasks.each do|task|
+        - @tasks.each_with_index do|task,index|
           %tr
             %th{ scope: "row" } 
               = task.title
@@ -56,6 +57,39 @@
               = task.user.email
             %td 
               = task.created_at
+            %td
+              = task.assigned? ? "Yes": "No"
+              %i.fa-solid.fa-circle-info{ data: { bs_toggle: "modal", bs_target: "#staticBackdrop-#{index}" } }
+              .modal.fade{id: "staticBackdrop-#{index}", data: {bs_backdrop: "static", bs_keyboard: "false"}, tabindex: "-1", aria: {labelledby: "staticBackdropLabel", hidden: "true"}}
+                .modal-dialog
+                  .modal-content
+                    .modal-header
+                      %h5.modal-title{id: "staticBackdrop-#{index}Label"} Task Detail
+                      %button.btn-close{type: "button", data: {bs_dismiss: "modal"}, aria: {label: "Close"}}
+                    .modal-body
+                      %h5
+                        = task.title
+                      %p
+                        This task has been assigned to :
+                        = task.user_email || ''
 
+                    .modal-footer
+                      %button.btn.btn-secondary{type: "button", data: {bs_dismiss: "modal"}} Close
+
+
+  - if user_signed_in? && current_user.admin?
+    %button.btn.btn-primary{"data-toggle" => "modal", "data-target" => "#assignTaskModal", "data-whatever" => "@assigntask"} Assigned Task
+    .modal.fade#assignTaskModal{"tabindex" => "-1", "role" => "dialog", "aria-labelledby" => "assignTaskModalLabel", "aria-hidden" => "true"}
+      .modal-dialog{"role" => "document"}
+        .modal-content{data: {controller: "task"}}
+          .modal-header
+            %h5.modal-title#assignTaskModalLabel Assign Task
+            %button.close{"data-dismiss" => "modal", "aria-label" => "Close"}
+              %span{"aria-hidden" => "true"} &times;
+          .modal-body
+            = render 'tasks/assign_task'
+          .modal-footer
+            %button.btn.btn-secondary{"data-dismiss" => "modal"} Close
+            %button.btn.btn-primary{type: "button", data: { action: "click->task#assign_task", user_id_target: 'assign_user_id', task_id_target: 'assign_task_id', owner_id_target: 'assign_owner_id'}} Create
 
 

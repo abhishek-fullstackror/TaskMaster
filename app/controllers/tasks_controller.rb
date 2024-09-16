@@ -35,7 +35,19 @@ class TasksController < ApplicationController
   end
 
   def testing_purpose
+    @tasks = Task.all
+    
   end
+
+  def assign
+    @assign_task = AssignedTask.new(assign_params)
+    if @assign_task.save
+      render json: @assign_task, status: :created
+    else
+      render json: @assign_task.errors, status: :unprocessable_entity
+    end
+  end
+
   # # PATCH/PUT /tasks/1 or /tasks/1.json
   # def update
   #   respond_to do |format|
@@ -59,7 +71,7 @@ class TasksController < ApplicationController
   #   end
   # end
 
-  # private
+  private
   #   # Use callbacks to share common setup or constraints between actions.
   #   def set_task
   #     @task = Task.find(params[:id])
@@ -68,5 +80,9 @@ class TasksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def task_params
       params.require(:task).permit(:title, :task, :description, :user_id)
+    end
+
+    def assign_params
+      params.require(:assigned_task).permit(:user_id, :task_id, :owner_id)
     end
 end
