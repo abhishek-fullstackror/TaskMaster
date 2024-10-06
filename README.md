@@ -1,6 +1,6 @@
 # TaskMaster
 
-TaskMaster is a real-time task management web application built with Ruby on Rails, Stimulus Reflex, CableReady, PostgreSQL, and Bootstrap. This README provides an overview of the application's setup and configuration.
+TaskMaster is a real-time task management web application built with Ruby on Rails, **Stimulus Reflex**, CableReady, PostgreSQL, and Bootstrap. This README provides an overview of the application's setup and configuration.
 
 ## Ruby Version
 
